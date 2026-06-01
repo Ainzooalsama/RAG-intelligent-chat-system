@@ -54,7 +54,7 @@
 | Vite | 极速构建工具 |
 | Vue Router | 路由管理 |
 | Pinia | 状态管理 |
-| i18n | 国际化支持 |
+| i18n | 中英文切换支持 |
 
 ## 项目结构
 
@@ -86,9 +86,9 @@
 
 | 功能模块 | 界面展示 | 功能说明 |
 |---------|:--------|---------|
-| AI 聊天 | ![AI聊天界面](./images/aichat.png) | 基于 RAG 的智能问答界面，支持上下文对话和文档引用 |
+| AI 聊天 | ![AI聊天界面](./images/ai_chat.png) | 基于 RAG 的智能问答界面，支持上下文对话和文档引用 |
 | 聊天管理 | ![聊天管理界面](./images/chat_manager.png) | 会话历史管理，支持会话列表查看和切换 |
-| 用户服务 | ![用户服务界面](./images/user_service.png) | 用户注册、登录和个人信息管理 |
+| 用户服务 | ![用户服务界面](./images/user_service.png) | 用户个人信息管理及其他服务 |
 | 知识库管理 | ![知识库管理页面](./images/knowledge_manager.png) | 文档上传、查看和管理知识库 |
 | 文档切片 | ![文档切片](./images/text_spliter.png) | 可视化文档切片详情，支持查看切片内容 |
 
@@ -108,7 +108,7 @@
 
 ```bash
 git clone https://github.com/Ainzooalsama/RAG-intelligent-chat-system.git
-cd LangChain-RAG-FastAPI-Service
+cd RAG-intelligent-chat-system
 ```
 
 ### 安装依赖
@@ -281,7 +281,7 @@ separators: ["\n\n", "\n", "。", "！", "？", "!", "?", " ", ""]
 
 ## 故障排除
 
-详细的故障排除指南请参考：[故障排除](./docs/troubleshooting.md)
+详细的故障排除指南可参考:[故障排除](./docs/troubleshooting.md)
 
 ## 文档
 
