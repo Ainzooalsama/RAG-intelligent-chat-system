@@ -24,7 +24,7 @@
 {
   "username": "testuser",
   "email": "test@example.com",
-  "telephone": "13800138000",
+  "telephone": "1145141919810",
   "password": "password123",
   "confirm_password": "password123"
 }
@@ -39,12 +39,12 @@
     "uuid": "a1b2c3d4-5678-90ef-ghij-klmnopqrstuv",
     "username": "testuser",
     "email": "test@example.com",
-    "telephone": "13800138000",
+    "telephone": "1145141919810",
     "gender": null,
     "bio": null,
     "avatar": null,
     "status": "active",
-    "date_joined": "2026-03-24T12:00:00Z",
+    "date_joined": "2026-04-24T12:00:00Z",
     "last_login": null
   },
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -83,13 +83,13 @@
     "uuid": "a1b2c3d4-5678-90ef-ghij-klmnopqrstuv",
     "username": "testuser",
     "email": "test@example.com",
-    "telephone": "13800138000",
+    "telephone": "1145141919810",
     "gender": null,
     "bio": null,
     "avatar": null,
     "status": "active",
-    "date_joined": "2026-03-24T12:00:00Z",
-    "last_login": "2026-03-24T12:30:00Z"
+    "date_joined": "2026-04-24T12:00:00Z",
+    "last_login": "2026-04-24T12:10:00Z"
   },
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
@@ -160,7 +160,7 @@
 {
   "message": "Token刷新成功",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "expire_time": "2026-03-24T14:30:00Z"
+  "expire_time": "2026-04-24T12:30:00Z"
 }
 ```
 
@@ -187,11 +187,11 @@
     "username": "testuser",
     "email": "test@example.com",
     "avatar": "/media/img/abc123.jpg",
-    "telephone": "13800138000",
+    "telephone": "1145141919810",
     "gender": "male",
     "bio": "这是个人简介",
-    "create_time": "2026-03-24T12:00:00Z",
-    "last_login": "2026-03-24T12:30:00Z"
+    "create_time": "2026-04-24T12:00:00Z",
+    "last_login": "2026-04-24T12:30:00Z"
   }
 }
 ```
@@ -223,7 +223,7 @@
 ```json
 {
   "username": "newname",
-  "telephone": "13900139000",
+  "telephone": "1111111111111",
   "gender": "male",
   "bio": "更新后的个人简介"
 }
@@ -238,13 +238,13 @@
     "uuid": "a1b2c3d4-5678-90ef-ghij-klmnopqrstuv",
     "username": "newname",
     "email": "test@example.com",
-    "telephone": "13900139000",
+    "telephone": "1111111111111",
     "gender": "male",
     "bio": "更新后的个人简介",
     "avatar": "/media/img/abc123.jpg",
     "status": "active",
-    "date_joined": "2026-03-24T12:00:00Z",
-    "last_login": "2026-03-24T12:30:00Z"
+    "date_joined": "2026-04-24T12:00:00Z",
+    "last_login": "2026-04-24T12:30:00Z"
   },
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
