@@ -1,14 +1,13 @@
-## RAG对话系统
+## RAG智能对话系统
 
-## 📋 目录
+##  目录
 
 - [项目简介](#项目简介)
 - [核心特性](#核心特性)
-- [项目架构](#项目架构)
-- [项目演示](#项目演示)
-- [快速开始](#快速开始)
 - [技术栈](#技术栈)
 - [项目结构](#项目结构)
+- [项目演示](#项目演示)
+- [快速开始](#快速开始)
 - [API 文档](#api文档)
 - [配置说明](#配置说明)
 - [部署指南](#部署指南)
@@ -18,60 +17,67 @@
 
 ## 项目简介
 
-基于 **FastAPI + LangChain** 构建的企业级智能对话系统，集成先进的 **RAG（检索增强生成）** 技术，能够基于文档内容提供高精度的智能问答服务。系统采用微服务架构，具备会话持久化、多语言支持和模块化设计等特性。
+基于FastAPI + LangChain构建的企业级智能对话系统，能够基于文档内容提供高精度的智能问答服务。该系统集成了先进的RAG技术，同时采用微服务架构，具备会话持久化、多语言支持和模块化设计等特性。
 
 ## 核心特性
 
-- **智能问答** 💬：基于 RAG 技术，结合文档检索和大语言模型，提供精准的问答体验
-- **会话持久化** 💾：使用 MySQL 存储会话历史，支持长期保存和回溯
-- **多语言支持** 🌐：前端集成 i18n，支持中英文界面切换
-- **文档管理** 📄：前端可视化文档上传、管理(查看细致的切片、原文档等信息)
-- **安全性** ⛑️：对不同用户的知识库进行隔离，RAG检索只能检索到自己上传的文档
-- **微服务架构** 🏗️：分离的用户服务和对话服务，易于扩展和维护
-- **高性能** ⚡：基于 FastAPI 和 ChromaDB，提供卓越的性能表现
+- **智能问答** ：基于 RAG 技术，结合文档检索和大语言模型，提供精准的问答体验
+- **文档管理** ：前端可视化文档上传、管理(查看细致的切片、原文档等信息)
+-  **会话持久化** ：使用 MySQL 存储会话历史，支持长期保存和回溯
+- **安全性** ：对不同用户的知识库进行隔离，RAG检索只能检索到自己上传的文档
+- **微服务架构** ：分离的用户服务和对话服务，易于扩展和维护
+- **高性能** ：基于 FastAPI 和 ChromaDB，提供卓越的性能表现
+- **前端个性化支持** ：前端集成 i18n，支持中英文界面切换，同时支持主题颜色切换
 
-## 项目架构
+## 技术栈
 
-```mermaid
-flowchart TD
-    subgraph "前端层"
-        A["用户界面 (Vue 3)"] -->|发送查询| B["API请求 (Axios)"]
-        C["会话管理 (Pinia)"] -->|状态管理| B
-        D["用户认证 (Vue Router)"] -->|路由守卫| B
-    end
+### 后端技术
 
-    subgraph "API路由层"
-        B -->|REST API| E["聊天路由 (FastAPI)"]
-        E -->|认证| F["认证中间件 (JWT)"]
-        E -->|限流| G["限流控制 (Redis)"]
-    end
+| 技术 | 说明 |
+|------|------|
+| FastAPI | 高性能异步 Web 框架 |
+| LangChain | 大语言模型应用开发框架 |
+| ChromaDB | 轻量级向量数据库 |
+| Django | 用户认证和管理系统 |
+| MySQL | 关系型数据库 |
+| Redis | 缓存数据库 |
+| DashScope API | 大语言模型服务 |
+| Hugging Face | 预训练模型服务 |
+| PyTorch | 深度学习框架 |
+| Sentence-Transformers | 句子嵌入库 |
 
-    subgraph "业务服务层"
-        E -->|代理查询| H["ChatService (Python)"]
-        H -->|会话管理| I["SessionManager (MySQL)"]
-        H -->|RAG检索| J["RagService (LangChain)"]
-        H -->|向量存储| K["VectorStoreService (ChromaDB)"]
-        H -->|智能代理| L["Agent (LangChain)"]
-        H -->|文档重排序| M["ReorderService (Hugging Face)"]
-    end
+### 前端技术
 
-    subgraph "数据存储层"
-        I -->|存储会话| N["MySQL数据库"]
-        K -->|向量存储| O["ChromaDB向量库"]
-        K -->|文件存储| P["文件系统"]
-        G -->|缓存| Q["Redis缓存"]
-    end
+| 技术 | 说明 |
+|------|------|
+| Vue 3 | 现代化前端框架 |
+| Vite | 极速构建工具 |
+| Vue Router | 路由管理 |
+| Pinia | 状态管理 |
+| i18n | 国际化支持 |
 
-    subgraph "AI模型服务"
-        L -->|LLM调用| R["DashScope API (Qwen3-Max)"]
-        J -->|嵌入模型| S["文本嵌入 (text-embedding-v4)"]
-        M -->|重排序模型| T["Qwen3-Reranker-0.6B"]
-    end
+## 项目结构
 
-    subgraph "用户服务"
-        U["Django用户服务"] -->|认证授权| F
-        U -->|用户管理| V["MySQL用户数据库"]
-    end
+```
+├── backend/                  # FastAPI 后端服务
+│   ├── app/                  # 应用代码
+│   │   ├── agent/            # 智能代理模块
+│   │   ├── config/           # 配置文件目录
+│   │   ├── model/            # 数据模型定义
+│   │   ├── prompt/           # 提示词模板
+│   │   ├── rag/              # RAG 核心功能
+│   │   ├── router/           # API 路由定义
+│   │   ├── services/         # 业务服务层
+│   │   └── utils/            # 工具函数
+│   ├── data/                 # 数据存储目录
+│   ├── main.py               # 应用入口文件
+│   └── requirements.txt      # 后端依赖列表
+├── front/                    # Vue 前端项目
+│   ├── src/                  # 源代码
+│   ├── public/               # 静态资源
+│   └── package.json          # 前端依赖配置
+├── DjangoUserService/        # Django 用户服务
+└── README.md                 # 项目说明文档
 ```
 
 ## 项目演示
@@ -237,56 +243,7 @@ separators: ["\n\n", "\n", "。", "！", "？", "!", "?", " ", ""]
 | Redis | `redis-server` 或 `net start redis` | 6379 |
 | Ollama | `ollama serve` | 11434 |
 
-## 技术栈
 
-### 后端技术
-
-| 技术 | 说明 |
-|------|------|
-| FastAPI | 高性能异步 Web 框架 |
-| LangChain | 大语言模型应用开发框架 |
-| ChromaDB | 轻量级向量数据库 |
-| Django | 用户认证和管理系统 |
-| MySQL | 关系型数据库 |
-| Redis | 缓存数据库 |
-| DashScope API | 大语言模型服务 |
-| Hugging Face | 预训练模型服务 |
-| PyTorch | 深度学习框架 |
-| Sentence-Transformers | 句子嵌入库 |
-
-### 前端技术
-
-| 技术 | 说明 |
-|------|------|
-| Vue 3 | 现代化前端框架 |
-| Vite | 极速构建工具 |
-| Vue Router | 路由管理 |
-| Pinia | 状态管理 |
-| i18n | 国际化支持 |
-
-## 项目结构
-
-```
-├── backend/                  # FastAPI 后端服务
-│   ├── app/                  # 应用代码
-│   │   ├── agent/            # 智能代理模块
-│   │   ├── config/           # 配置文件目录
-│   │   ├── model/            # 数据模型定义
-│   │   ├── prompt/           # 提示词模板
-│   │   ├── rag/              # RAG 核心功能
-│   │   ├── router/           # API 路由定义
-│   │   ├── services/         # 业务服务层
-│   │   └── utils/            # 工具函数
-│   ├── data/                 # 数据存储目录
-│   ├── main.py               # 应用入口文件
-│   └── requirements.txt      # 后端依赖列表
-├── front/                    # Vue 前端项目
-│   ├── src/                  # 源代码
-│   ├── public/               # 静态资源
-│   └── package.json          # 前端依赖配置
-├── DjangoUserService/        # Django 用户服务
-└── README.md                 # 项目说明文档
-```
 
 ## API文档
 
