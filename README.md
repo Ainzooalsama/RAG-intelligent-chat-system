@@ -107,7 +107,7 @@
 ### 克隆项目
 
 ```bash
-git clone https://github.com/RMA-MUN/LangChain-RAG-FastAPI-Service.git
+git clone https://github.com/Ainzooalsama/RAG-intelligent-chat-system.git
 cd LangChain-RAG-FastAPI-Service
 ```
 
